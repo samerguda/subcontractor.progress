@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table with Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: left;
+        }
+        .button-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        #searchInput {
+            margin-bottom: 20px;
+            padding: 8px;
+            width: calc(100% - 20px);
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Subcontractor Progress - Abha Pipeline</h1>
+    <h3 style="text-align: center;">Eng.Samer Alsaadni</h1>
+    <div class="container">
+        <div class="button-container">
+            <button class="button" onclick="copyTable()">Copy</button>
+            <button class="button" onclick="window.print()">Print</button>
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search for words..">
+        </div>
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Activity</th>
+                    <th>Internal Activity</th>
+                    <th>External Activity</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample Data from 1 to 237 with additional cells -->
+                <tr><td>1</td>
+                    <td>KP 1+239 VENT SHAFT No 1</td>
+                    <td>Done </td>
+                    <td> Done</td>
+                    <td> </td></tr>
+
+
+
+                <tr><td>2</td><td>KP 1+800 WASH OUT SHAFT No 1</td><td>Done </td><td>Done </td><td> </td></tr>
+                <tr><td>3</td><td>KP 1+922 DRAIN SHAFT No 1</td><td> </td><td> Done</td><td> </td></tr>  
+                <tr><td>4</td><td>KP 4+383 VENT SHAFT No 2</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>5</td><td>VENT STATION-3 (8+185.47kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>6</td><td>DRAIN STATION-2 (8+438.34kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>7</td><td>VENT STATION-4 (8+610.02kp)</td><td></td><td>Done</td> <td></td></tr>
+                <tr><td>8</td><td>DRAIN STATION-3 (8+803.93kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>9</td><td>M-VENT STATION-1 (8+872.71kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>10</td><td>M-VENT STATION-2 (9+639.98kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>11</td><td>DRAIN STATION-4 (9+703.88kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>12</td><td>M-VENT STATION-3 (9+913.49kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>13</td><td>M-VENT STATION-4 (10+038.17kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>14</td><td>VENT STATION-5 (10+259.26kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>15</td><td>DRAIN STATION-5 (10+461.55kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>16</td><td>M-VENT STATION-5 (12+118.81kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>17</td><td>DRAIN STATION-6 (12+245.5kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>18</td><td>M-VENT STATION-6 (13+206.54kp)</td><td></td> <td>Done</td><td></td></tr>
+                <tr><td>19</td><td>VENT STATION-6 (13+527.06kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>20</td><td>M-VENT STATION-7 (14+572.05kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>21</td><td>DRAIN STATION-7 (14+689.36kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>22</td><td>M-VENT STATION-8 (16+618.96kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>23</td><td>VENT STATION-7 (17+484.88kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>24</td><td>M-VENT STATION-9 (17+712.57kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>25</td><td>WASHOUT DRAIN STATION-2 (18+618.77kp)</td><td> </td><td>Done</td><td></td></tr>
+                <tr><td>26</td><td>DRAIN STATION-8 (24+929.81kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>27</td><td>VENT STATION-8 (26+988.55kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>28</td><td>DRAIN STATION-9 (28+465.97kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>29</td><td>VENT STATION-9 (30+887.61kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>30</td><td>VENT STATION-10 (32+874.01kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>31</td><td>VENT STATION-11 (33+593.24kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>32</td><td>DRAIN STATION-10 (33+616.99kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>33</td><td>VENT STATION-12 (34+109.78kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>34</td><td>M-VENT STATION-10 (37+715.12kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>35</td><td>DRAIN STATION-11 (38+811.21kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>36</td><td>VENT STATION-13 (40+514.14kp)</td><td></td><td>Done</td><td></td></tr>
+                <tr><td>37</td><td>WASHOUT DRAIN STATION-3 (41+033.42kp)</td><td></td>Done<td></td><td></td></tr>
+                <tr><td>38</td><td>VENT STATION-14 (41+229.44kp)</td><td></td><td></td><td></td></tr>
+                <tr><td>39</td><td>VENT STATION-15 (43+930.18kp)</td><td></td><td></td><td></td></tr>
+                <tr><td>40</td><td>DRAIN STATION-12 (43+946.72kp)</td><td></td><td></td><td></td></tr>
+                <tr><td>41</td><td>KP 43+980 VENT SHAFT No 25</td><td></td><td></td><td></td></tr>
+                <tr><td>42</td><td>KP 44+000 DRAIN SHAFT No 12</td><td></td><td></td><td></td></tr>
+                <tr><td>43</td><td>KP 44+935 VENT SHAFT No 26</td><td></td><td></td><td></td></tr>
+                <tr><td>44</td><td>KP 45+022 DRAIN SHAFT No 13</td><td></td><td></td><td></td></tr>
+                <tr><td>45</td><td>KP 46+467 VENT SHAFT No 27</td><td></td><td></td><td></td></tr>
+                <tr><td>46</td><td>KP 46+579 DRAIN SHAFT No 14</td><td></td><td></td><td></td></tr>
+                <tr><td>47</td><td>KP 48+303 VENT SHAFT No 28</td><td></td><td></td><td></td></tr>
+                <tr><td>48</td><td>KP 48+373 DRAIN SHAFT No 15</td><td></td><td></td><td></td></tr>
+                <tr><td>49</td><td>KP 48+775 VENT SHAFT No 29</td><td></td><td></td><td></td></tr>
+                <tr><td>50</td><td>KP 48+939 DRAIN SHAFT No 16</td><td></td><td></td><td></td></tr>
+                <tr><td>51</td><td>KP 49+636 VENT SHAFT No 30</td><td></td><td></td><td></td></tr>
+                <tr><td>52</td><td>KP 49+711 DRAIN SHAFT No 17</td><td></td><td></td><td></td></tr>
+                <tr><td>53</td><td>KP 50+543 VENT SHAFT No 31</td><td></td><td></td><td></td></tr>
+                <tr><td>54</td><td>KP 51+053 VENT SHAFT No 32</td><td></td><td></td><td></td></tr>
+                <tr><td>55</td><td>KP 51+284 DRAIN SHAFT No 18</td><td></td><td></td><td></td></tr>
+                <tr><td>56</td><td>KP 52+548 VENT SHAFT No 33</td><td></td><td></td><td></td></tr>
+                <tr><td>57</td><td>KP 52+657 DRAIN SHAFT No 19</td><td></td><td></td><td></td></tr>
+                <tr><td>58</td><td>KP 53+437 VENT SHAFT No 34</td><td></td><td></td><td></td></tr>
+                <tr><td>59</td><td>KP 53+905 DRAIN SHAFT No 20</td><td></td><td></td><td></td></tr>
+                <tr><td>60</td><td>KP 54+369 VENT SHAFT No 35</td><td></td><td></td><td></td></tr>
+                <tr><td>61</td><td>KP 55+548 VENT SHAFT No 36</td><td></td><td></td><td></td></tr>
+                <tr><td>62</td><td>KP 55+667 DRAIN SHAFT No 21</td><td></td><td></td><td></td></tr>
+                <tr><td>63</td><td>KP 56+911 VENT SHAFT No 37</td><td></td><td></td><td></td></tr>
+                <tr><td>64</td><td>KP 57+006 DRAIN SHAFT No 22</td><td></td><td></td><td></td></tr>
+                <tr><td>65</td><td>KP 57+177 VENT SHAFT No 38</td><td></td><td></td><td></td></tr>
+                <tr><td>66</td><td>KP 57+309 DRAIN SHAFT No 23</td><td></td><td></td><td></td></tr>
+                <tr><td>67</td><td>KP 57+521 VENT SHAFT No 39</td><td></td><td></td><td></td></tr>
+                <tr><td>68</td><td>KP 57+761 DRAIN SHAFT No 24</td><td></td><td></td><td></td></tr>
+                <tr><td>69</td><td>KP 57+935 VENT SHAFT No 40</td><td></td><td></td><td></td></tr>
+                <tr><td>70</td><td>KP 58+377 DRAIN SHAFT No 25</td><td></td><td></td><td></td></tr>
+                <tr><td>71</td><td>KP 58+720 VENT SHAFT No 41</td><td></td><td></td><td></td></tr>
+                <tr><td>72</td><td>KP 58+959 VENT SHAFT No 42</td><td></td><td></td><td></td></tr>
+                <tr><td>73</td><td>KP 59+415 DRAIN SHAFT No 26</td><td></td><td></td><td></td></tr>
+                <tr><td>74</td><td>KP 60+211 VENT SHAFT No 43</td><td></td><td></td><td></td></tr>
+                <tr><td>75</td><td>KP 60+505 DRAIN SHAFT No 27</td><td></td><td></td><td></td></tr>
+                <tr><td>76</td><td>KP 60+762 VENT SHAFT No 44</td><td></td><td></td><td></td></tr>
+                <tr><td>77</td><td>KP 60+979 DRAIN SHAFT No 28</td><td></td><td></td><td></td></tr>
+                <tr><td>78</td><td>KP 62+029 VENT SHAFT No 45</td><td></td><td></td><td></td></tr>
+                <tr><td>79</td><td>KP 62+168 DRAIN SHAFT No 29</td><td></td><td></td><td></td></tr>
+                <tr><td>80</td><td>KP 62+277 VENT SHAFT No 46</td><td></td><td></td><td></td></tr>
+                <tr><td>81</td><td>KP 62+668 DRAIN SHAFT No 30</td><td></td><td></td><td></td></tr>
+                <tr><td>82</td><td>KP 63+102 VENT SHAFT No 47</td><td></td><td></td><td></td></tr>
+                <tr><td>83</td><td>KP 63+445 DRAIN SHAFT No 31</td><td></td><td></td><td></td></tr>
+                <tr><td>84</td><td>KP 63+993 DRAIN SHAFT No 32</td><td></td><td></td><td></td></tr>
+                <tr><td>85</td><td>KP 64+233 VENT SHAFT No 48</td><td></td><td></td><td></td></tr>
+                <tr><td>86</td><td>KP 64+386 DRAIN SHAFT No 33</td><td></td><td></td><td></td></tr>
+                <tr><td>87</td><td>KP 65+054 VENT SHAFT No 49</td><td></td><td></td><td></td></tr>
+                <tr><td>88</td><td>KP 65+105 DRAIN SHAFT No 34</td><td></td><td></td><td></td></tr>
+                <tr><td>89</td><td>KP 65+350 VENT SHAFT No 50</td><td></td><td></td><td></td></tr>
+                <tr><td>90</td><td>KP 65+365 DRAIN SHAFT No 35</td><td></td><td></td><td></td></tr>
+                <tr><td>91</td><td>KP 67+935 DRAIN SHAFT No 36</td><td></td><td></td><td></td></tr>
+                <tr><td>92</td><td>KP 67+994 VENT SHAFT No 51</td><td></td><td></td><td></td></tr>
+                <tr><td>93</td><td>KP 68+201 DRAIN SHAFT No 37</td><td></td><td></td><td></td></tr>
+                <tr><td>94</td><td>KP 68+413 WASH OUT SHAFT No 4</td><td></td><td></td><td></td></tr>
+                <tr><td>95</td><td>KP 68+736 VENT SHAFT No 52</td><td></td><td></td><td></td></tr>
+                <tr><td>96</td><td>KP 69+136 DRAIN SHAFT No 38</td><td></td><td></td><td></td></tr>
+                <tr><td>97</td><td>KP 69+328 VENT SHAFT No 53</td><td></td><td></td><td></td></tr>
+                <tr><td>98</td><td>KP 69+520 DRAIN SHAFT No 39</td><td></td><td></td><td></td></tr>
+                <tr><td>99</td><td>KP 69+777 DRAIN SHAFT No 40</td><td></td><td></td><td></td></tr>
+                <tr><td>100</td><td>KP 70+861 VENT SHAFT No 54</td><td></td><td></td><td></td></tr>
+                <tr><td>101</td><td>KP 71+002 DRAIN SHAFT No 41</td><td></td><td></td><td></td></tr>
+                <tr><td>102</td><td>KP 71+711 VENT SHAFT No 55</td><td></td><td></td><td></td></tr>
+                <tr><td>103</td><td>KP 72+638 VENT SHAFT No 56</td><td></td><td></td><td></td></tr>
+                <tr><td>104</td><td>KP 73+243 DRAIN SHAFT No 42</td><td></td><td></td><td></td></tr>
+                <tr><td>105</td><td>KP 73+477 VENT SHAFT No 57</td><td></td><td></td><td></td></tr>
+                <tr><td>106</td><td>KP 73+839 VENT SHAFT No 58</td><td></td><td></td><td></td></tr>
+                <tr><td>107</td><td>KP 74+367 VENT SHAFT No 59</td><td></td><td></td><td></td></tr>
+                <tr><td>108</td><td>KP 74+728 DRAIN SHAFT No 43</td><td></td><td></td><td></td></tr>
+                <tr><td>109</td><td>KP 75+293 VENT SHAFT No 60</td><td></td><td></td><td></td></tr>
+                <tr><td>110</td><td>KP 75+894 VENT SHAFT No 61</td><td></td><td></td><td></td></tr>
+                <tr><td>111</td><td>KP 76+449 DRAIN SHAFT No 44</td><td></td><td></td><td></td></tr>
+                <tr><td>112</td><td>KP 76+545 VENT SHAFT No 62</td><td></td><td></td><td></td></tr>
+                <tr><td>113</td><td>KP 76+874 DRAIN SHAFT No 45</td><td></td><td></td><td></td></tr>
+                <tr><td>114</td><td>KP 77+323 VENT SHAFT No 63</td><td></td><td></td><td></td></tr>
+                <tr><td>115</td><td>KP 77+878 VENT SHAFT No 64</td><td></td><td></td><td></td></tr>
+                <tr><td>116</td><td>KP 78+029 VENT SHAFT No 65</td><td></td><td></td><td></td></tr>
+                <tr><td>117</td><td>KP 78+213 VENT SHAFT No 66</td><td></td><td></td><td></td></tr>
+                <tr><td>118</td><td>KP 78+407 DRAIN SHAFT No 46</td><td></td><td></td><td></td></tr>
+                <tr><td>119</td><td>KP 78+996 VENT SHAFT No 67</td><td></td><td></td><td></td></tr>
+                <tr><td>120</td><td>KP 79+138 VENT SHAFT No 68</td><td></td><td></td><td></td></tr>
+                <tr><td>121</td><td>KP 79+202 DRAIN SHAFT No 47</td><td></td><td></td><td></td></tr>
+                <tr><td>122</td><td>KP 79+412 VENT SHAFT No 69</td><td></td><td></td><td></td></tr>
+                <tr><td>123</td><td>KP 79+675 DRAIN SHAFT No 48</td><td></td><td></td><td></td></tr>
+                <tr><td>124</td><td>KP 79+838 VENT SHAFT No 70</td><td></td><td></td><td></td></tr>
+                <tr><td>125</td><td>KP 80+002 VENT SHAFT No 71</td><td></td><td></td><td></td></tr>
+                <tr><td>126</td><td>KP 80+109 DRAIN SHAFT No 49</td><td></td><td></td><td></td></tr>
+                <tr><td>127</td><td>KP 80+573 VENT SHAFT No 72</td><td></td><td></td><td></td></tr>
+                <tr><td>128</td><td>KP 81+116 DRAIN SHAFT No 50</td><td></td><td></td><td></td></tr>
+                <tr><td>129</td><td>KP 81+328 VENT SHAFT No 73</td><td></td><td></td><td></td></tr>
+                <tr><td>130</td><td>KP 81+596 DRAIN SHAFT No 51</td><td></td><td></td><td></td></tr>
+                <tr><td>131</td><td>KP 81+907 VENT SHAFT No 74</td><td></td><td></td><td></td></tr>
+                <tr><td>132</td><td>KP 82+083 DRAIN SHAFT No 52</td><td></td><td></td><td></td></tr>
+                <tr><td>133</td><td>KP 82+366 VENT SHAFT No 75</td><td></td><td></td><td></td></tr>
+                <tr><td>134</td><td>KP 82+603 DRAIN SHAFT No 53</td><td></td><td></td><td></td></tr>
+                <tr><td>135</td><td>KP 82+782 INLET SHAFT TUNNEL No 1 44"</td><td></td><td></td><td></td></tr>
+                <tr><td>136</td><td>KP 82+782 INLET SHAFT TUNNEL No 1 64"</td><td></td><td></td><td></td></tr>
+                <tr><td>137</td><td>KP 83+000 tunnel No 1 44" 127 support 1582 m</td><td></td><td></td><td></td></tr>
+                <tr><td>138</td><td>KP 83+000 tunnel No 1 64" 127 support 1582 m</td><td></td><td></td><td></td></tr>
+                <tr><td>139</td><td>KP 83 tunnel No 1 in 44" VENT No 76</td><td></td><td></td><td></td></tr>
+                <tr><td>140</td><td>KP 83 tunnel No 1 in 64" VENT No 77</td><td></td><td></td><td></td></tr>
+                <tr><td>141</td><td>KP 84+803 tunnel No 1 out 44" VENT No 78</td><td></td><td></td><td></td></tr>
+                <tr><td>142</td><td>KP 84+803 tunnel No 1 out 64" VENT No 79</td><td></td><td></td><td></td></tr>
+                <tr><td>143</td><td>KP 85+162 B/W T1&T2 DRAIN SHAFT 44" No 54</td><td></td><td></td><td></td></tr>
+                <tr><td>144</td><td>KP 85+162 B/W T1&T2 DRAIN SHAFT 64" No 55</td><td></td><td></td><td></td></tr>
+                <tr><td>145</td><td>KP 85+249 tunnel No 2 44"</td><td></td><td></td><td></td></tr>
+                <tr><td>146</td><td>KP 85+249 tunnel No 2 64"</td><td></td><td></td><td></td></tr>
+                <tr><td>147</td><td>KP 85+262 tunnel No 2 in 64" VENT No 80</td><td></td><td></td><td></td></tr>
+                <tr><td>148</td><td>KP 85+262 tunnel No 2 in 44" VENT No 81</td><td></td><td></td><td></td></tr>
+                <tr><td>149</td><td>KP 87+600 tunnel No 2 out 64" VENT No 82</td><td></td><td></td><td></td></tr>
+                <tr><td>150</td><td>KP 87+600 tunnel No 2 OUT 44" VENT No 83</td><td></td><td></td><td></td></tr>
+                <tr><td>151</td><td>KP 87+645 B/W T2&T3 DRAIN SHAFT 44" No 56</td><td></td><td></td><td></td></tr>
+                <tr><td>152</td><td>KP 87+645 B/W T2&T3 DRAIN SHAFT 64" No 57</td><td></td><td></td><td></td></tr>
+                <tr><td>153</td><td>KP 88+100 B/W T2&3 64" VENT No 84</td><td></td><td></td><td></td></tr>
+                <tr><td>154</td><td>KP 88+100 B/W T2&T3 44" VENT No 85</td><td></td><td></td><td></td></tr>
+                <tr><td>155</td><td>KP 88+176 B/W T2&T3 DRAIN SHAFT 44" No 58</td><td></td><td></td><td></td></tr>
+                <tr><td>156</td><td>KP 88+176 B/W T2&T3 DRAIN SHAFT 64" No 59</td><td></td><td></td><td></td></tr>
+                <tr><td>157</td><td>KP 88+691 tunnel No 3 44"</td><td></td><td></td><td></td></tr>
+                <tr><td>158</td><td>KP 88+691 tunnel No 3 64"</td><td></td><td></td><td></td></tr>
+                <tr><td>159</td><td>KP 88+700 tunnel No 3 in 64" VENT No 86</td><td></td><td></td><td></td></tr>
+                <tr><td>160</td><td>KP 88 +700 tunnel No 3 in 44" VENT No 87</td><td></td><td></td><td></td></tr>
+                <tr><td>161</td><td>KP 89+300 tunnel No 3 out 64" VENT No 88</td><td></td><td></td><td></td></tr>
+                <tr><td>162</td><td>KP 89+300 tunnel No 3 out 44" VENT No 89</td><td></td><td></td><td></td></tr>
+                <tr><td>163</td><td>KP 89+311 OUTLET SHAFT TUNNEL No 3 44"</td><td></td><td></td><td></td></tr>
+                <tr><td>164</td><td>KP 89+311 OUTLET SHAFT TUNNEL No 3 64"</td><td></td><td></td><td></td></tr>
+                <tr><td>165</td><td>KP 89+545 DRAIN SHAFT No 60</td><td></td><td></td><td></td></tr>
+                <tr><td>166</td><td>KP 89+868 VENT SHAFT No 90</td><td></td><td></td><td></td></tr>
+                <tr><td>167</td><td>KP 90+366 VENT SHAFT No 91</td><td></td><td></td><td></td></tr>
+                <tr><td>168</td><td>KP 91+589 VENT SHAFT No 92</td><td></td><td></td><td></td></tr>
+                <tr><td>169</td><td>KP 91+581 WASH OUT SHAFT No 5</td><td></td><td></td><td></td></tr>
+                <tr><td>170</td><td>KP 91+969 VENT SHAFT No 93</td><td></td><td></td><td></td></tr>
+                <tr><td>171</td><td>KP 92+142 DRAIN SHAFT No 61</td><td></td><td></td><td></td></tr>
+                <tr><td>172</td><td>KP 92+288 VENT SHAFT No 94</td><td></td><td></td><td></td></tr>
+                <tr><td>173</td><td>KP 92+557 VENT SHAFT No 95</td><td></td><td></td><td></td></tr>
+                <tr><td>174</td><td>KP 92+702 DRAIN SHAFT No 62</td><td></td><td></td><td></td></tr>
+                <tr><td>175</td><td>KP 93+589 VENT SHAFT No 96</td><td></td><td></td><td></td></tr>
+                <tr><td>176</td><td>KP 94+125 DRAIN SHAFT No 63</td><td></td><td></td><td></td></tr>
+                <tr><td>177</td><td>KP 94+654 VENT SHAFT No 97</td><td></td><td></td><td></td></tr>
+                <tr><td>178</td><td>KP 95+334 VENT SHAFT No 98</td><td></td><td></td><td></td></tr>
+                <tr><td>179</td><td>KP 95+684 DRAIN SHAFT No 64</td><td></td><td></td><td></td></tr>
+                <tr><td>180</td><td>KP 96+574 VENT SHAFT No 99</td><td></td><td></td><td></td></tr>
+                <tr><td>181</td><td>KP 96+701 WASH OUT SHAFT No 6</td><td></td><td></td><td></td></tr>
+                <tr><td>182</td><td>KP 98+400 tunnel No 4A 44"</td><td></td><td></td><td></td></tr>
+                <tr><td>183</td><td>KP 98+400 tunnel No 4A 64"</td><td></td><td></td><td></td></tr>
+                <tr><td>184</td><td>KP 98+420 tunnel No 4A in 64" VENT No 100</td><td></td><td></td><td></td></tr>
+                <tr><td>185</td><td>KP 98+420 tunnel No 4A in 44" VENT No 101</td><td></td><td></td><td></td></tr>
+                <tr><td>186</td><td>KP 99+100 tunnel No 4A out 64" VENT No 102</td><td></td><td></td><td></td></tr>
+                <tr><td>187</td><td>KP 99+100 tunnel No 4A out 44" VENT No 103</td><td></td><td></td><td></td></tr>
+                <tr><td>188</td><td>KP 99+400 tunnel No 4B 44"</td><td></td><td></td><td></td></tr>
+                <tr><td>189</td><td>KP 99+400 tunnel No 4B 64"</td><td></td><td></td><td></td></tr>
+                <tr><td>190</td><td>KP 99+420 tunnel No 4B in 64" VENT No 104</td><td></td><td></td><td></td></tr>
+                <tr><td>191</td><td>KP 99+420 tunnel No 4B in 44" VENT No 105</td><td></td><td></td><td></td></tr>
+                <tr><td>192</td><td>KP 101+100 tunnel No 4B out 64" VENT No 106</td><td></td><td></td><td></td></tr>
+                <tr><td>193</td><td>KP 101+100 tunnel No 4B out 44" VENT No 107</td><td></td><td></td><td></td></tr>
+                <tr><td>194</td><td>KP 101+111 OUTLET SHAFT TUNNEL No 4B 44"</td><td></td><td></td><td></td></tr>
+                <tr><td>195</td><td>KP 101+111 OUTLET SHAFT TUNNEL No 4B 64"</td><td></td><td></td><td></td></tr>
+                <tr><td>196</td><td>KP 102+179 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>197</td><td>KP 102+211 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>198</td><td>KP 103+257 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>199</td><td>KP 103+463 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>200</td><td>KP 104+410 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>201</td><td>KP 104+514 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>202</td><td>KP 105+546 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>203</td><td>KP 105+666 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>204</td><td>KP 106+535 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>205</td><td>KP 107+835 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>206</td><td>KP 110+098 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>207</td><td>KP 110+397 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>208</td><td>KP 111+767 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>209</td><td>KP 112+358 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>210</td><td>KP 112+985 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>211</td><td>KP 113+642 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>212</td><td>KP 114+137 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>213</td><td>KP 114+899 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>214</td><td>KP 115+261 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>215</td><td>KP 116+197 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>216</td><td>KP 116+379 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>217</td><td>KP 116+688 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>218</td><td>KP 117+031 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>219</td><td>KP 117+785 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>220</td><td>KP 118+068 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>221</td><td>KP 119+108 WASHOUT</td><td></td><td></td><td></td></tr>
+                <tr><td>222</td><td>KP 119+923 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>223</td><td>KP 120+547 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>224</td><td>KP 122+677 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>225</td><td>KP 122+925 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>226</td><td>KP 122+985 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>227</td><td>KP 123+189 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>228</td><td>KP 124+571 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>229</td><td>KP 124+863 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>230</td><td>KP 126+306 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>231</td><td>KP 127+219 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>232</td><td>KP 128+298 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>233</td><td>KP 128+596 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>234</td><td>KP 128+860 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>235</td><td>KP 128+962 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>236</td><td>KP 129+330 VENT SHAFT</td><td></td><td></td><td></td></tr>
+                <tr><td>237</td><td>KP 129+498 DRAIN SHAFT</td><td></td><td></td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function copyTable() {
+            var range = document.createRange();
+            range.selectNode(document.getElementById("dataTable"));
+            window.getSelection().removeAllRanges(); 
+            window.getSelection().addRange(range); 
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+        }
+
+        function searchTable() {
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("dataTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td");
+                for (j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
+
